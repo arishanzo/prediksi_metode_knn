@@ -1,0 +1,96 @@
+<?php include_once('header.php');
+require_once "../config/config.php";
+?>
+
+
+<div class="row col-lg-12">
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="card-body">
+                                <form action="hasil.php" enctype="multipart/form-data" method="get">
+                                    <div class="form-group">
+                                        <label for="kategori">
+                                            <div class="section-title mt-0"> Nama Barang </div>
+                                        </label>
+
+                                        <select class="custom-select" id="idbarang" name="idbarang">
+                                            <option disabled selected>Pilih Barang</option>
+                                            <?php
+
+                                            $sql2 = mysqli_query($con, "SELECT * FROM barang ");
+                                            while ($row2 = mysqli_fetch_array($sql2)) {
+                                            ?>
+                                                <option value="<?= $row2['id_barang'] ?>"><?= $row2['nama_barang'] ?></option>
+                                            <?php
+
+                                            }
+
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Bulan">
+                                            <div class="section-title mt-0"> Bulan </div>
+                                        </label>
+
+                                        <select class="custom-select" id="Bulan" name="bulan">
+                                            <option selected disabled>Pilih Bulan</option>
+                                            <option value="Januari">Januari</option>
+                                            <option value="Febuari">Februari</option>
+                                            <option value="Maret">Maret</option>
+                                            <option value="Appril">Appril</option>
+                                            <option value="Mei">Mei</option>
+                                            <option value="Juni">Juni</option>
+                                            <option value="Juli">Juli</option>
+                                            <option value="Agustus">Agustus</option>
+                                            <option value="September">September</option>
+                                            <option value="Oktober">Oktober</option>
+                                            <option value="November">November</option>
+                                            <option value="Desember">Desember</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="tahun">
+                                            <div class="section-title mt-0"> Tahun </div>
+                                        </label>
+
+                                        <select class="custom-select" id="Tahun" name="tahun">
+                                            <option selected disabled>Pilih Tahun</option>
+                                            <?php
+                                            for ($i = date('Y'); $i >= date('Y') - 32; $i -= 1) {
+                                                echo "<option value='$i'> $i </option>";
+                                            }
+                                            ?>
+
+                                        </select>
+                                    </div>
+
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-dark mr-1" type="submit" name="submit">prediksi</button>
+                                    </div>
+                                    </from>
+                                    <div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<?php include_once('footer.php');
+?>
